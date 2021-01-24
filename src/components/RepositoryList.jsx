@@ -64,9 +64,16 @@ const renderItem = ({ item }) => {
   );
 };
 
+const listStyles = StyleSheet.create({
+  container: {
+    padding: 10,
+  }
+});
+
 const RepositoryList = () => {
   return (
     <FlatList
+    style={listStyles.container}
       data={repositories}
       ItemSeparatorComponent={ItemSeparator}
       renderItem={renderItem}
