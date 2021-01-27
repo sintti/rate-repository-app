@@ -73,7 +73,8 @@ const listStyles = StyleSheet.create({
 const RepositoryList = () => {
   return (
     <FlatList
-    style={listStyles.container}
+      keyExtractor={(repositories) => repositories.id}
+      style={listStyles.container}
       data={repositories}
       ItemSeparatorComponent={ItemSeparator}
       renderItem={renderItem}

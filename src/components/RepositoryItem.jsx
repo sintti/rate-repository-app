@@ -1,5 +1,4 @@
 import React from 'react';
-import Constants from 'expo-constants';
 import { View, StyleSheet, Image } from 'react-native';
 
 import Text from './Text';
@@ -9,16 +8,15 @@ const itemHeaderStyles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     flexGrow: 1,
-    paddingLeft: 5,
-    paddingTop: 5
+    paddingLeft: 10,
+    paddingTop: 10,
   },
   avatar: {
     width: 45,
     height: 45,
-    borderRadius: 45 / 5,
+    borderRadius: 45 / 6,
   },
   avatarContainer: {
-    flexGrow: 0,
     paddingRight: 15,
   },
   infoContainer: {
@@ -27,11 +25,10 @@ const itemHeaderStyles = StyleSheet.create({
   language: {
     backgroundColor: theme.colors.primary,
     color: theme.colors.whiteText,
-    borderStyle: 'solid',
     borderRadius: 3,
     width: 'max-content',
-    paddingVertical: 1,
-    paddingHorizontal: 2
+    paddingVertical: 2,
+    paddingHorizontal: 3
   },
   text: {
     paddingBottom: 5
@@ -66,9 +63,11 @@ const ItemHeader = ({ item }) => {
 
 const itemBodyStyles = StyleSheet.create({
   container: {
-    paddingVertical: 15,
-    paddingLeft: 5
-  }
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingHorizontal: 10,
+    paddingVertical: 5
+  },
 });
 
 const ItemBody = ({ item }) => {
@@ -78,54 +77,35 @@ const ItemBody = ({ item }) => {
   };
 
   return (
-    <View style={itemBodyStyles.container}>
-      <table>
-        <tr>
-          <td>
-            <Text fontWeight='bold'>
-              {numberFormatter(item.stargazersCount)}
-            </Text>
-          </td>
-          <td>
-            <Text fontWeight='bold'>
-              {numberFormatter(item.forksCount)}
-            </Text>
-          </td>
-          <td>
-            <Text fontWeight='bold'>
-             {numberFormatter(item.reviewCount)}
-            </Text>
-          </td>
-          <td>
-            <Text fontWeight='bold'>
-             {numberFormatter(item.ratingAverage)}
-            </Text>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <Text>
-              Stars
-            </Text>
-          </td>
-          <td>
-          <Text>
-              Forks
-            </Text>
-          </td>
-          <td>
-          <Text>
-              Reviews
-            </Text>
-            
-          </td>
-          <td>
-          <Text>
-              Rating
-            </Text>
-          </td>
-        </tr>
-      </table>
+    <View >
+      <View style={itemBodyStyles.container}>
+        <Text fontWeight='bold'>
+          {numberFormatter(item.stargazersCount)}
+        </Text>
+        <Text fontWeight='bold'>
+          {numberFormatter(item.forksCount)}
+        </Text>
+        <Text fontWeight='bold'>
+          {numberFormatter(item.reviewCount)}
+        </Text>
+        <Text fontWeight='bold'>
+          {numberFormatter(item.ratingAverage)}
+        </Text>
+      </View>
+      <View style={itemBodyStyles.container}>
+        <Text>
+          Stars
+        </Text>
+        <Text>
+          Forks
+        </Text>
+        <Text>
+          Reviews
+        </Text>
+        <Text>
+          Rating
+        </Text>
+      </View>
     </View>
   );
 };

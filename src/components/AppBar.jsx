@@ -13,24 +13,16 @@ const styles = StyleSheet.create({
       backgroundColor: theme.appBar.background
     },
     tab: {
-      flex: 1,
       width: 'max-content',
       paddingHorizontal: 5,
       paddingVertical: 2
-    },
-    signin: {
-      flex: 1,
-      width: 'max-content',
-      paddingHorizontal: 5,
-      paddingVertical: 2,
-      alignSelf: 'flex-end'
     }
 });
 
 const AppBar = () => {
     return (
     <View style={styles.container}>
-        <ScrollView horizontal style={styles.scrollView}>
+        <ScrollView horizontal>
           <View style={styles.tab}>
             <Link to='/' component={TouchableWithoutFeedback}>
             <Text color='appBar'>Repositories</Text>
