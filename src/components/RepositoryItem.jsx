@@ -61,17 +61,32 @@ const ItemHeader = ({ item }) => {
   );
 };
 
+// const itemBodyStyles = StyleSheet.create({
+//   container: {
+//     flexDirection: 'row',
+//     justifyContent: 'space-around',
+//     paddingHorizontal: 10,
+//     paddingVertical: 5
+//   },
+// });
+
 const itemBodyStyles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingHorizontal: 10,
-    paddingVertical: 5
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(min(80px, 100%), 1fr))',
+    paddingHorizontal: 25,
+    paddingBottom: 5,
+    paddingTop: 10
+  },
+  item: {
+    display: 'table-cell',
+    
   },
 });
 
 const ItemBody = ({ item }) => {
 
+  // Format item's numbers to contain k for thousands
   const numberFormatter = (num) => {
     return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'k' : Math.sign(num)*Math.abs(num);
   };
@@ -79,30 +94,30 @@ const ItemBody = ({ item }) => {
   return (
     <View >
       <View style={itemBodyStyles.container}>
-        <Text fontWeight='bold'>
+        <Text fontWeight='bold' style={itemBodyStyles.item} >
           {numberFormatter(item.stargazersCount)}
         </Text>
-        <Text fontWeight='bold'>
+        <Text fontWeight='bold' style={itemBodyStyles.item} >
           {numberFormatter(item.forksCount)}
         </Text>
-        <Text fontWeight='bold'>
+        <Text fontWeight='bold' style={itemBodyStyles.item} >
           {numberFormatter(item.reviewCount)}
         </Text>
-        <Text fontWeight='bold'>
+        <Text fontWeight='bold' style={itemBodyStyles.item} >
           {numberFormatter(item.ratingAverage)}
         </Text>
       </View>
       <View style={itemBodyStyles.container}>
-        <Text>
+        <Text style={itemBodyStyles.item}>
           Stars
         </Text>
-        <Text>
+        <Text style={itemBodyStyles.item}>
           Forks
         </Text>
-        <Text>
+        <Text style={itemBodyStyles.item}>
           Reviews
         </Text>
-        <Text>
+        <Text style={itemBodyStyles.item}>
           Rating
         </Text>
       </View>
@@ -112,7 +127,7 @@ const ItemBody = ({ item }) => {
 
 const itemStyles = StyleSheet.create({
   container: {
-    backgroundColor: theme.colors.itemBackground
+    backgroundColor: theme.colors.itemBackground,
   }
 });
 
