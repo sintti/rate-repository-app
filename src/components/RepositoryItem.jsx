@@ -7,9 +7,8 @@ import theme from '../theme';
 const itemHeaderStyles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    flexGrow: 1,
-    paddingLeft: 10,
-    paddingTop: 10,
+    paddingLeft: 15,
+    paddingTop: 15,
   },
   avatar: {
     width: 45,
@@ -18,9 +17,6 @@ const itemHeaderStyles = StyleSheet.create({
   },
   avatarContainer: {
     paddingRight: 15,
-  },
-  infoContainer: {
-    flexGrow: 1,
   },
   language: {
     backgroundColor: theme.colors.primary,
@@ -31,11 +27,15 @@ const itemHeaderStyles = StyleSheet.create({
     paddingHorizontal: 3
   },
   text: {
-    paddingBottom: 5
+    paddingBottom: 5,
   }
 });
 
 const ItemHeader = ({ item }) => {
+  
+  const truncate = (str, n) => {
+    return (str.length > n) ? `${str.substr(0, n-1)}...` : str;
+  };
 
   return (
     <View style={itemHeaderStyles.container}>
@@ -48,10 +48,10 @@ const ItemHeader = ({ item }) => {
         <Text fontSize='subheading' fontWeight='bold'
           style={itemHeaderStyles.text}
           >
-          {item.fullName}
+          {truncate(item.fullName, 30)}
         </Text>
         <Text style={itemHeaderStyles.text}>
-          {item.description}
+          {truncate(item.description, 58)}
         </Text>
         <Text style={itemHeaderStyles.language}>
           {item.language}
@@ -61,26 +61,12 @@ const ItemHeader = ({ item }) => {
   );
 };
 
-// const itemBodyStyles = StyleSheet.create({
-//   container: {
-//     flexDirection: 'row',
-//     justifyContent: 'space-around',
-//     paddingHorizontal: 10,
-//     paddingVertical: 5
-//   },
-// });
-
 const itemBodyStyles = StyleSheet.create({
   container: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(min(80px, 100%), 1fr))',
-    paddingHorizontal: 25,
-    paddingBottom: 5,
-    paddingTop: 10
-  },
-  item: {
-    display: 'table-cell',
-    
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingHorizontal: 10,
+    paddingVertical: 5
   },
 });
 
@@ -94,30 +80,30 @@ const ItemBody = ({ item }) => {
   return (
     <View >
       <View style={itemBodyStyles.container}>
-        <Text fontWeight='bold' style={itemBodyStyles.item} >
+        <Text fontWeight='bold' >
           {numberFormatter(item.stargazersCount)}
         </Text>
-        <Text fontWeight='bold' style={itemBodyStyles.item} >
+        <Text fontWeight='bold' >
           {numberFormatter(item.forksCount)}
         </Text>
-        <Text fontWeight='bold' style={itemBodyStyles.item} >
+        <Text fontWeight='bold' >
           {numberFormatter(item.reviewCount)}
         </Text>
-        <Text fontWeight='bold' style={itemBodyStyles.item} >
+        <Text fontWeight='bold' >
           {numberFormatter(item.ratingAverage)}
         </Text>
       </View>
       <View style={itemBodyStyles.container}>
-        <Text style={itemBodyStyles.item}>
+        <Text >
           Stars
         </Text>
-        <Text style={itemBodyStyles.item}>
+        <Text>
           Forks
         </Text>
-        <Text style={itemBodyStyles.item}>
+        <Text >
           Reviews
         </Text>
-        <Text style={itemBodyStyles.item}>
+        <Text >
           Rating
         </Text>
       </View>
@@ -132,7 +118,6 @@ const itemStyles = StyleSheet.create({
 });
 
 const RepositoryItem = ({ item }) => {
-  
   return (
     <View style={itemStyles.container}>
       <ItemHeader item={item} />

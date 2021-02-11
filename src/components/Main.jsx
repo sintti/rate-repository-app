@@ -8,6 +8,7 @@ import AppBar from './AppBar';
 import RepositoryList from './RepositoryList';
 import SignIn from './SignIn';
 import theme from '../theme';
+import useSignIn from '../hooks/useSignIn';
 
 const styles = StyleSheet.create({
   container: {
@@ -18,9 +19,16 @@ const styles = StyleSheet.create({
 });
 
 const Main = () => {
+  const [ signIn ] = useSignIn();
   
-  const submitSignIn = (values) => {
+  const submitSignIn = async (values) => {
     console.log(values);
+    try {
+      const { data } = await signIn();
+      console.log( data );
+    } catch (e) {
+      console.log(e);
+    }
   };
   
   return (
