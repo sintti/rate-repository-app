@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Route, Switch, Redirect } from 'react-router-native';
+import { Route, Switch, Redirect, useHistory } from 'react-router-native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
@@ -20,15 +20,19 @@ const styles = StyleSheet.create({
 
 const Main = () => {
   const [ signIn ] = useSignIn();
+  const history = useHistory();
   
   const submitSignIn = async (values) => {
-    console.log(values);
+    const { username, password } = values;
+
     try {
-      const { data } = await signIn();
-      console.log( data );
+      const { data } = await signIn( { username, password } );
+      if (data) {
+        history.push('/');
+      }
     } catch (e) {
       console.log(e);
-    }
+    } 
   };
   
   return (
