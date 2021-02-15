@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Route, Switch, Redirect, useHistory } from 'react-router-native';
 import { Formik } from 'formik';
@@ -9,6 +9,7 @@ import RepositoryList from './RepositoryList';
 import SignIn from './SignIn';
 import theme from '../theme';
 import useSignIn from '../hooks/useSignIn';
+// import AuthStorageContext from '../context/AuthStorageContext';
 
 const styles = StyleSheet.create({
   container: {
@@ -19,17 +20,19 @@ const styles = StyleSheet.create({
 });
 
 const Main = () => {
-  const [ signIn ] = useSignIn();
-  const history = useHistory();
+  const [ signIn, result, auth ] = useSignIn();
+  // const history = useHistory();
+  // const authStorage = useContext(AuthStorageContext);
   
   const submitSignIn = async (values) => {
     const { username, password } = values;
 
     try {
       const { data } = await signIn( { username, password } );
-      if (data) {
-        history.push('/');
-      }
+      console.log(data);
+      // if (authStorage.getAccesToken()) {
+      //   history.push('/');
+      // }
     } catch (e) {
       console.log(e);
     } 
