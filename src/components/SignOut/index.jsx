@@ -3,9 +3,9 @@ import { useApolloClient } from '@apollo/react-hooks';
 import { View, StyleSheet } from 'react-native';
 import { useHistory } from 'react-router-native';
 
-import Text from './Text';
-import AuthStorageContext from '../context/AuthStorageContext';
-import theme from '../theme';
+import Text from '../Text/index';
+import AuthStorageContext from '../../context/AuthStorageContext';
+import theme from '../../theme';
 
 const styles = StyleSheet.create({
   container: {
@@ -34,10 +34,10 @@ const SignOut = () => {
   const apolloClient = useApolloClient();
   const history = useHistory();
   
-  const submitSignout = () => {
-    authStorage.removeAccessToken();
-    apolloClient.resetStore();
-    //history.push('/');
+  const submitSignout = async () => {
+    await authStorage.removeAccessToken();
+    await apolloClient.resetStore();
+    history.push('/');
   };
 
     return (

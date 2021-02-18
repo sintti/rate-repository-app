@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, TouchableWithoutFeedback, StyleSheet } from 'react-native';
 
-import Text from './Text';
-import FormikTextInput from './forms/FormikTextInput';
-import theme from '../theme';
+import Text from '../Text/index';
+import FormikTextInput from '../forms/FormikTextInput';
+import theme from '../../theme';
 
 const SignIn = ({ onSubmit }) => {
   

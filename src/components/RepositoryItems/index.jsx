@@ -1,10 +1,10 @@
 import { useQuery } from '@apollo/react-hooks';
 import React from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
-import { GET_REPOSITORIES } from '../graphql/queries';
+import { GET_REPOSITORIES } from '../../graphql/queries';
 
 import RepositoryItem from './RepositoryItem';
-import Loader from './Loader';
+import Loader from '../Loader/index';
 
 const styles = StyleSheet.create({
   separator: {

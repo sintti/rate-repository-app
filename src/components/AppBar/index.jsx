@@ -4,10 +4,10 @@ import { View, StyleSheet, TouchableWithoutFeedback, ScrollView } from 'react-na
 import { Link } from 'react-router-native';
 import { useQuery } from '@apollo/react-hooks';
 
-import Text from './Text';
-import theme from '../theme';
-import AuthStorageContext from '../context/AuthStorageContext';
-import { AUTHORIZED_USER } from '../graphql/queries';
+import Text from '../Text/index';
+import theme from '../../theme';
+import AuthStorageContext from '../../context/AuthStorageContext';
+import { AUTHORIZED_USER } from '../../graphql/queries';
 
 
 const styles = StyleSheet.create({

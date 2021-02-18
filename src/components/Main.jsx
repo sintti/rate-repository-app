@@ -4,12 +4,12 @@ import { Route, Switch, Redirect, useHistory } from 'react-router-native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
-import AppBar from './AppBar';
-import RepositoryList from './RepositoryList';
-import SignIn from './SignIn';
+import AppBar from './AppBar/index';
+import RepositoryList from './RepositoryItems/index';
+import SignIn from './SignIn/index';
 import theme from '../theme';
 import useSignIn from '../hooks/useSignIn';
-import SignOut from './SignOut';
+import SignOut from './SignOut/index';
 import AuthStorageContext from '../context/AuthStorageContext';
 
 const styles = StyleSheet.create({
