@@ -29,7 +29,7 @@ const Main = () => {
     const { username, password } = values;
 
     try {
-      const { data } = await signIn( { username, password } );
+      await signIn( { username, password } );
       const user = await authStorage.getAccessToken();
       if (user) {
         history.push('/');
