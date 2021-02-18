@@ -9,7 +9,7 @@ import RepositoryList from './RepositoryList';
 import SignIn from './SignIn';
 import theme from '../theme';
 import useSignIn from '../hooks/useSignIn';
-import SignOut from './Signout';
+import SignOut from './SignOut';
 import AuthStorageContext from '../context/AuthStorageContext';
 
 const styles = StyleSheet.create({
@@ -30,7 +30,6 @@ const Main = () => {
 
     try {
       const { data } = await signIn( { username, password } );
-      console.log(data);
       const user = await authStorage.getAccessToken();
       if (user) {
         history.push('/');

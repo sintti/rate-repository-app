@@ -28,7 +28,21 @@ const AppBar = () => {
   const token = authStorage.getAccessToken();
   console.log(token);
   const { data, loading, error } = useQuery(AUTHORIZED_USER);
+  
+  if (error) {
+    console.log(error);
+  }
 
+  if (loading) {
+    return (
+      <View>
+        <Text>
+          loading...
+        </Text>
+      </View>    
+    );
+  }
+  
   console.log(data);
   
   if (data.authorizedUser) {
