@@ -9,7 +9,8 @@ import RepositoryList from './RepositoryList';
 import SignIn from './SignIn';
 import theme from '../theme';
 import useSignIn from '../hooks/useSignIn';
-// import AuthStorageContext from '../context/AuthStorageContext';
+import SignOut from './Signout';
+import AuthStorageContext from '../context/AuthStorageContext';
 
 const styles = StyleSheet.create({
   container: {
@@ -20,9 +21,9 @@ const styles = StyleSheet.create({
 });
 
 const Main = () => {
-  const [ signIn, result, auth ] = useSignIn();
-  // const history = useHistory();
-  // const authStorage = useContext(AuthStorageContext);
+  const [ signIn ] = useSignIn();
+  const history = useHistory();
+  const authStorage = useContext(AuthStorageContext);
   
   const submitSignIn = async (values) => {
     const { username, password } = values;
@@ -30,9 +31,10 @@ const Main = () => {
     try {
       const { data } = await signIn( { username, password } );
       console.log(data);
-      // if (authStorage.getAccesToken()) {
-      //   history.push('/');
-      // }
+      const user = await authStorage.getAccessToken();
+      if (user) {
+        history.push('/');
+      }
     } catch (e) {
       console.log(e);
     } 
@@ -59,6 +61,9 @@ const Main = () => {
           <Route>
             <Redirect to='/signin' />
           </Route>
+        </Route>
+        <Route path='/signout'>
+          <SignOut />
         </Route>
       </Switch>
     </View>
