@@ -1,21 +1,14 @@
 import React from 'react';
-import { FlatList, View, StyleSheet } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 
 import RepositoryItem from './RepositoryItem';
+import ItemSeparator from './ItemSeparator';
 
 const listStyles = StyleSheet.create({
   container: {
     padding: 10,
   }
 });
-
-const styles = StyleSheet.create({
-  separator: {
-    height: 10,
-  },
-});
-
-const ItemSeparator = () => <View style={styles.separator} />;
 
 const renderItem = ({ item }) => {
   return(

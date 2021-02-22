@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Constants from 'expo-constants';
 import { View, StyleSheet, TouchableWithoutFeedback, ScrollView } from 'react-native';
 import { Link } from 'react-router-native';
@@ -46,6 +46,11 @@ const AppBar = () => {
           <View style={styles.tab}>
             <Link to='/' component={TouchableWithoutFeedback}>
             <Text color='appBar'>Repositories</Text>
+            </Link>
+          </View>
+          <View style={styles.tab}>
+            <Link to='/review' component={TouchableWithoutFeedback}>
+              <Text color='appBar'>Create a review</Text>
             </Link>
           </View>
           <View style={styles.tab}>

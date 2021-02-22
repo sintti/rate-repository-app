@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import { useHistory, useParams } from 'react-router-native';
+import { useHistory } from 'react-router-native';
 
 import theme from '../../theme';
 import ItemHeader from './ItemHeader';
@@ -8,8 +8,6 @@ import ItemBody from './ItemBody';
 
 const RepositoryItem = ({ item, showGithub }) => {
   const history = useHistory();
-  
-  console.log('item: ', item);
   
   const showRepo = () => {
     history.push(`/${item.id}`);
@@ -28,6 +26,7 @@ const RepositoryItem = ({ item, showGithub }) => {
 const itemStyles = StyleSheet.create({
   container: {
     backgroundColor: theme.colors.itemBackground,
+    marginBottom: 10
   }
 });
 

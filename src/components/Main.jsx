@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Route, Switch, Redirect, useHistory, useParams } from 'react-router-native';
+import { Route, Switch, Redirect, useHistory } from 'react-router-native';
 import { Formik } from 'formik';
 
 import AppBar from './AppBar';
@@ -12,6 +12,7 @@ import useSignIn from '../hooks/useSignIn';
 import SignOut from './SignOut';
 import AuthStorageContext from '../context/AuthStorageContext';
 import { validationSchema } from '../utils/validationSchema';
+import Review from './Review';
 
 const styles = StyleSheet.create({
   container: {
@@ -64,6 +65,9 @@ const Main = () => {
         </Route>
         <Route path='/signout' exact>
           <SignOut />
+        </Route>
+        <Route path='/review' exact>
+          <Review />
         </Route>
         <Route path='/:id'>
           <RepositorySingleView />

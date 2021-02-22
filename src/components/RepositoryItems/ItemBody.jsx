@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Linking } from 'react-native';
 
 import Text from '../Text/index';
 import theme from '../../theme';
@@ -15,7 +15,6 @@ const itemBodyStyles = StyleSheet.create({
 
 const ItemBody = ({ item, showGithub }) => {
 
-  // Format item's numbers to contain k for thousands
   const numberFormatter = (num) => {
     return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'k' : Math.sign(num)*Math.abs(num);
   };
@@ -52,7 +51,7 @@ const ItemBody = ({ item, showGithub }) => {
       </View>
       <View>
         <Text>
-        {showGithub && <GitHubButton />}
+        {showGithub && <GitHubButton url={item.url} />}
         </Text>
       </View>
     </View>
@@ -60,6 +59,12 @@ const ItemBody = ({ item, showGithub }) => {
 };
 
 const buttonStyle = StyleSheet.create({
+  container: {
+    minWidth: '95vw',
+    alignSelf: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
   button: {
     backgroundColor: theme.colors.primary,
     color: theme.colors.whiteText,
@@ -67,23 +72,27 @@ const buttonStyle = StyleSheet.create({
     borderRadius: 3,
     alignSelf: 'flex-start',
     paddingVertical: 7,
-    paddingHorizontal: 8
+    paddingHorizontal: 8,
+    margin: 10,
+    textAlign: 'center',
   }
 });
 
-const GitHubButton = () => {
-  
+const GitHubButton = ({ url }) => {
+  console.log(url);
   const handlePress = () => {
-    console.log('github button pressed');
+    Linking.openURL(url);
   };
   
   return (
     <TouchableOpacity onPress={() => handlePress()}>
-      <Text style={buttonStyle.button}>
-        Show on GitHub
-      </Text>
+      <View style={buttonStyle.container}>
+        <Text style={buttonStyle.button}>
+          Show on GitHub
+        </Text>
+      </View>
     </TouchableOpacity>
-  )
+  );
 };
 
 export default ItemBody;

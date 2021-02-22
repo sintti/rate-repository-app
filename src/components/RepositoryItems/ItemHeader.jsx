@@ -44,7 +44,7 @@ const ItemHeader = ({ item }) => {
             uri: item.ownerAvatarUrl
           }}/>
       </View>
-      <View style={itemHeaderStyles.infoContainer}>
+      <View>
         <Text fontSize='subheading' fontWeight='bold'
           style={itemHeaderStyles.text}
           testID='fullName'

@@ -1,14 +1,16 @@
 import React from 'react';
+import { FlatList } from 'react-native';
 import { useParams } from 'react-router-native';
 import { useQuery } from '@apollo/react-hooks';
 
 import RepositoryItem from './RepositoryItem';
+import ReviewItem from './ReviewItem';
+import ItemSeparator from './ItemSeparator';
 import { GET_REPOSITORY } from '../../graphql/queries';
 import Loader from '../Loader';
 
 const RepositorySingleView = () => {
   const id = useParams().id;
-  console.log('id eprkeleelel: ', id);
   const { data, error, loading } = useQuery(GET_REPOSITORY, {
     variables: { id: id }
   });
@@ -24,11 +26,16 @@ const RepositorySingleView = () => {
   }
   
   const { repository } = data;
-  
-  console.log('repo: ', repository);
-  
+  const reviews = repository.reviews.edges.map(({node}) => node);
+  console.log(reviews);
   return (
-    <RepositoryItem item={repository} showGithub={true}/>
+    <FlatList 
+      data={reviews}
+      renderItem={({ item }) => <ReviewItem review={item} />}
+      keyExtractor={({ id }) => id}
+      ItemSeparatorComponent={ItemSeparator}
+      ListHeaderComponent={() => <RepositoryItem item={repository} showGithub={true}/>}
+    />
   );
 };
 
