@@ -11,7 +11,7 @@ import theme from '../theme';
 import useSignIn from '../hooks/useSignIn';
 import SignOut from './SignOut';
 import AuthStorageContext from '../context/AuthStorageContext';
-import { validationSchema } from '../utils/validationSchema';
+import { signInSchema } from '../utils/validationSchema';
 import Review from './Review';
 
 const styles = StyleSheet.create({
@@ -54,7 +54,7 @@ const Main = () => {
         <Route path='/signin' exact>
           <Formik 
             initialValues={{ username: '', password: '' }}
-            validationSchema={validationSchema}
+            validationSchema={signInSchema}
             onSubmit={submitSignIn}
           >
             {({ handleSubmit }) => <SignIn onSubmit={handleSubmit} />}

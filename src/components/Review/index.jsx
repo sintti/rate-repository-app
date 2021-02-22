@@ -4,6 +4,7 @@ import { Formik } from 'formik';
 
 import FormikTextInput from '../forms/FormikTextInput';
 import Text from '../Text';
+import { reviewSchema } from '../../utils/validationSchema';
 import theme from '../../theme';
 
 const Review = () => {
@@ -14,7 +15,7 @@ const Review = () => {
 
     const initialValues = {
       username: '',
-      repoName: '',
+      repository: '',
       rating: '0',
       review: ''
     };
@@ -22,6 +23,7 @@ const Review = () => {
     return (
         <Formik
           initialValues={initialValues}
+          validationSchema={reviewSchema}
           onSubmit={submitReview}
         >
           {({handleSubmit}) => <ReviewForm onSubmit={handleSubmit} />}
@@ -32,10 +34,10 @@ const Review = () => {
 const ReviewForm = ({ onSubmit }) => {
     return (
         <View style={styles.container} >
-            <FormikTextInput name='username' type='text' placeholder='username' />
-            <FormikTextInput name='repoName' type='text' placeholder={'repository\'s name'} />
-            <FormikTextInput name='rating' placeholder='rating' />
-            <FormikTextInput name='review' type='text' placeholder='review' />
+            <FormikTextInput name='username' type='text' placeholder='Repository owner name' />
+            <FormikTextInput name='repository' type='text' placeholder='Repository name' />
+            <FormikTextInput name='rating' placeholder='Rating between 1 and 100' />
+            <FormikTextInput name='review' type='text' placeholder='Review' multiline />
             <TouchableWithoutFeedback onPress={onSubmit} >
               <Text style={styles.button}>Create review</Text>
             </TouchableWithoutFeedback>
@@ -54,15 +56,16 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: theme.colors.primary,
     color: theme.colors.whiteText,
-    width: 208,
+    width: '50vw',
     paddingVertical: 5,
     paddingHorizontal: 4,
     marginVertical: 5,
     borderRadius: 2,
+    fontSize: '1.2rem',
     textAlign: 'center'
   },
   input: {
     borderColor: theme.colors.textSecondary,
-    borderStyle: 'solid'
+    borderStyle: 'solid',
   }
 });

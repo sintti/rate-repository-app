@@ -29,11 +29,12 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: theme.colors.primary,
     color: theme.colors.whiteText,
-    width: 208,
+    width: '50vw',
     paddingVertical: 5,
     paddingHorizontal: 4,
     marginVertical: 5,
     borderRadius: 2,
+    fontSize: '1.2rem',
     textAlign: 'center'
   },
   input: {

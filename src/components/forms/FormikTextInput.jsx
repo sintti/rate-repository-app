@@ -19,17 +19,22 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     paddingVertical: 5,
     paddingLeft: 3,
-    marginTop: 5,
+    marginVertical: 5,
+    width: '60vw',
+    height: 45,
+    fontSize: '1.1rem'
   },
   input: {
     borderColor: theme.colors.mainBackground,
     color: theme.colors.textSecondary,
     borderRadius: 3,
     borderStyle: 'solid',
-    borderWidth: 1,
-    paddingVertical: 5,
+    borderWidth: 2,
     paddingLeft: 3,
-    marginTop: 5,
+    marginVertical: 5,
+    width: '60vw',
+    height: 45,
+    fontSize: '1.1rem'
   }
 });
 

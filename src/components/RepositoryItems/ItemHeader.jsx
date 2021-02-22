@@ -23,7 +23,7 @@ const itemHeaderStyles = StyleSheet.create({
     color: theme.colors.whiteText,
     borderRadius: 3,
     alignSelf: 'flex-start',
-    paddingVertical: 2,
+    paddingVertical: 4,
     paddingHorizontal: 3
   },
   text: {

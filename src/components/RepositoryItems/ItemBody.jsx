@@ -60,7 +60,7 @@ const ItemBody = ({ item, showGithub }) => {
 
 const buttonStyle = StyleSheet.create({
   container: {
-    minWidth: '95vw',
+    width: '100vw',
     alignSelf: 'center',
     flexDirection: 'row',
     justifyContent: 'center',
@@ -68,9 +68,10 @@ const buttonStyle = StyleSheet.create({
   button: {
     backgroundColor: theme.colors.primary,
     color: theme.colors.whiteText,
-    fontSize: 14,
+    fontSize: 16,
     borderRadius: 3,
     alignSelf: 'flex-start',
+    width: '80vw',
     paddingVertical: 7,
     paddingHorizontal: 8,
     margin: 10,
