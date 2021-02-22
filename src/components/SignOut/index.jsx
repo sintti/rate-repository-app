@@ -3,7 +3,7 @@ import { useApolloClient } from '@apollo/react-hooks';
 import { View, StyleSheet } from 'react-native';
 import { useHistory } from 'react-router-native';
 
-import Text from '../Text/index';
+import Text from '../Text';
 import AuthStorageContext from '../../context/AuthStorageContext';
 import theme from '../../theme';
 

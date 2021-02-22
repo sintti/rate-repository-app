@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, TouchableWithoutFeedback, StyleSheet } from 'react-native';
 
-import Text from '../Text/index';
+import Text from '../Text';
 import FormikTextInput from '../forms/FormikTextInput';
 import theme from '../../theme';
 
@@ -9,9 +9,9 @@ const SignIn = ({ onSubmit }) => {
   
   return (
     <View style={styles.container}>
-      <FormikTextInput name='username' placeholder='Username' />
-      <FormikTextInput name='password' placeholder='Password' secureTextEntry={true} />
-      <TouchableWithoutFeedback onPress={onSubmit}>
+      <FormikTextInput name='username' placeholder='Username' testID='testUsername' />
+      <FormikTextInput name='password' placeholder='Password' secureTextEntry={true} testID='testPassword' />
+      <TouchableWithoutFeedback onPress={onSubmit} testID='testSubmitSignin' >
         <Text style={styles.button}>Sign in</Text>
       </TouchableWithoutFeedback>
     </View>

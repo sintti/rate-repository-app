@@ -1,16 +1,17 @@
 import React, { useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Route, Switch, Redirect, useHistory } from 'react-router-native';
+import { Route, Switch, Redirect, useHistory, useParams } from 'react-router-native';
 import { Formik } from 'formik';
-import * as yup from 'yup';
 
-import AppBar from './AppBar/index';
-import RepositoryList from './RepositoryItems/index';
-import SignIn from './SignIn/index';
+import AppBar from './AppBar';
+import RepositoryList from './RepositoryItems';
+import RepositorySingleView from './RepositoryItems/RepositorySingleView';
+import SignIn from './SignIn';
 import theme from '../theme';
 import useSignIn from '../hooks/useSignIn';
-import SignOut from './SignOut/index';
+import SignOut from './SignOut';
 import AuthStorageContext from '../context/AuthStorageContext';
+import { validationSchema } from '../utils/validationSchema';
 
 const styles = StyleSheet.create({
   container: {
@@ -61,23 +62,15 @@ const Main = () => {
             <Redirect to='/signin' />
           </Route>
         </Route>
-        <Route path='/signout'>
+        <Route path='/signout' exact>
           <SignOut />
+        </Route>
+        <Route path='/:id'>
+          <RepositorySingleView />
         </Route>
       </Switch>
     </View>
   );
 };
-
-const validationSchema = yup.object().shape({
-  username: yup
-    .string()
-    .min(1, 'Username must be longer or equal to 1')
-    .required('Username is required'),
-  password: yup
-    .string()
-    .min(2, 'Password must be longer or equal to 2')
-    .required('Password is required')
-});
 
 export default Main;

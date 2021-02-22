@@ -4,9 +4,8 @@ import { View, StyleSheet, TouchableWithoutFeedback, ScrollView } from 'react-na
 import { Link } from 'react-router-native';
 import { useQuery } from '@apollo/react-hooks';
 
-import Text from '../Text/index';
+import Text from '../Text';
 import theme from '../../theme';
-import AuthStorageContext from '../../context/AuthStorageContext';
 import { AUTHORIZED_USER } from '../../graphql/queries';
 
 
@@ -17,16 +16,13 @@ const styles = StyleSheet.create({
       backgroundColor: theme.appBar.background
     },
     tab: {
-      width: 'max-content',
+      alignSelf: 'flex-start',
       paddingHorizontal: 5,
       paddingVertical: 2
     }
 });
 
 const AppBar = () => {
-  const authStorage = useContext(AuthStorageContext);
-  const token = authStorage.getAccessToken();
-  console.log(token);
   const { data, loading, error } = useQuery(AUTHORIZED_USER);
   
   if (error) {
@@ -42,8 +38,6 @@ const AppBar = () => {
       </View>    
     );
   }
-  
-  console.log(data);
   
   if (data.authorizedUser) {
     return (
