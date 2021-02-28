@@ -12,11 +12,11 @@ export const signInSchema = yup.object().shape({
 });
 
 export const reviewSchema = yup.object().shape({
-  username: yup
+  ownerName: yup
     .string()
     .min(1, 'Repository owner name must be longer or equal to 1')
     .required('Repository owner name is required'),
-  repository: yup
+  repositoryName: yup
     .string()
     .min(1, 'Repository\'s name must be longer or equal to 1')
     .required('Repository\' name is required'),
@@ -24,7 +24,6 @@ export const reviewSchema = yup.object().shape({
     .number()
     .min(1, 'Rating between 1 and 100 required')
     .required('Rating is required'),
-  review: yup
+  text: yup
     .string()
-    .required('Review the repository')
 });

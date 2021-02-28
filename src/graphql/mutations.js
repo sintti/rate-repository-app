@@ -8,10 +8,22 @@ export const AUTHORIZE=gql`
   }
 `;
 
-export const AUTHORIZE2=gql`
-  mutation {
-    authorize(credentials: {username: "kalle", password: "password"}){
-      accessToken
+export const CREATE_REVIEW=gql`
+  mutation($review: CreateReviewInput!){
+    createReview(review: $review){
+      id
+      user {
+        id
+        username
+      }
+      createdAt
+      repository{
+        id
+        url
+      }
+      rating
+      repositoryId
+      text
     }
   }
 `;

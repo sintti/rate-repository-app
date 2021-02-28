@@ -80,7 +80,6 @@ const buttonStyle = StyleSheet.create({
 });
 
 const GitHubButton = ({ url }) => {
-  console.log(url);
   const handlePress = () => {
     Linking.openURL(url);
   };

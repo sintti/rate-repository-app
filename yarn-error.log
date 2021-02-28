@@ -54,6 +54,7 @@ npm manifest:
       "@apollo/react-hooks": "^4.0.0",
       "@react-native-community/async-storage": "~1.11.0",
       "apollo-boost": "^0.4.9",
+      "date-fns": "^2.17.0",
       "dotenv": "^8.2.0",
       "expo": "^38.0.10",
       "expo-constants": "~9.1.1",
@@ -63,7 +64,7 @@ npm manifest:
       "react": "~16.11.0",
       "react-dom": "~16.11.0",
       "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
-      "react-native-web": "~0.11.7",
+      "react-native-web": "^0.15.0",
       "react-router-native": "^5.2.0",
       "yup": "^0.32.8"
     },

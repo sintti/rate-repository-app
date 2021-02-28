@@ -1,23 +1,38 @@
 import React from 'react';
 import { View, TouchableWithoutFeedback, StyleSheet } from 'react-native';
 import { Formik } from 'formik';
+import { useMutation } from '@apollo/react-hooks';
 
 import FormikTextInput from '../forms/FormikTextInput';
 import Text from '../Text';
 import { reviewSchema } from '../../utils/validationSchema';
 import theme from '../../theme';
+import { CREATE_REVIEW } from '../../graphql/mutations';
 
 const Review = () => {
+  const [createReview, result] = useMutation(CREATE_REVIEW);
 
-    const submitReview = (values) => {
-        console.log(values);
+    const submitReview = async (values) => {
+      const { ownerName, repositoryName, rating, text } = values;
+      console.log('data going into mutation: ', repositoryName, ownerName, rating, text);
+      const { data } = await createReview({
+        variables: {
+          review: {
+            ownerName,
+            repositoryName,
+            rating,
+            text
+          }
+        }
+      });
+      console.log('data from mah review: ', data);
     };
 
     const initialValues = {
-      username: '',
-      repository: '',
+      ownerName: '',
+      repositoryName: '',
       rating: '0',
-      review: ''
+      text: ''
     };
 
     return (
@@ -34,10 +49,10 @@ const Review = () => {
 const ReviewForm = ({ onSubmit }) => {
     return (
         <View style={styles.container} >
-            <FormikTextInput name='username' type='text' placeholder='Repository owner name' />
-            <FormikTextInput name='repository' type='text' placeholder='Repository name' />
+            <FormikTextInput name='ownerName' placeholder='Repository owner name' />
+            <FormikTextInput name='repositoryName' placeholder='Repository name' />
             <FormikTextInput name='rating' placeholder='Rating between 1 and 100' />
-            <FormikTextInput name='review' type='text' placeholder='Review' multiline />
+            <FormikTextInput name='text' placeholder='Review' multiline />
             <TouchableWithoutFeedback onPress={onSubmit} >
               <Text style={styles.button}>Create review</Text>
             </TouchableWithoutFeedback>
